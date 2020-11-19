@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/create-background/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/create-background/static/js/main.75e383df.chunk.js",
+    "main.js.map": "/create-background/static/js/main.75e383df.chunk.js.map",
+    "runtime-main.js": "/create-background/static/js/runtime-main.09cbbfb1.js",
+    "runtime-main.js.map": "/create-background/static/js/runtime-main.09cbbfb1.js.map",
+    "static/css/2.109aacae.chunk.css": "/create-background/static/css/2.109aacae.chunk.css",
+    "static/js/2.e0f22636.chunk.js": "/create-background/static/js/2.e0f22636.chunk.js",
+    "static/js/2.e0f22636.chunk.js.map": "/create-background/static/js/2.e0f22636.chunk.js.map",
+    "static/js/3.6ee3a4ee.chunk.js": "/create-background/static/js/3.6ee3a4ee.chunk.js",
+    "static/js/3.6ee3a4ee.chunk.js.map": "/create-background/static/js/3.6ee3a4ee.chunk.js.map",
+    "index.html": "/create-background/index.html",
+    "static/css/2.109aacae.chunk.css.map": "/create-background/static/css/2.109aacae.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/create-background/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.e0f22636.chunk.js.LICENSE.txt": "/create-background/static/js/2.e0f22636.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09cbbfb1.js",
+    "static/css/2.109aacae.chunk.css",
+    "static/js/2.e0f22636.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.75e383df.chunk.js"
+  ]
+}
