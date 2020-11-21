@@ -26,17 +26,17 @@ function App() {
 
   return (
     <>
-      <div style={{ paddingLeft: "4%", width: "96%" ,paddingTop: '2%'}}>
-          <h4>Background Creator</h4>
-          <p style={{ fontSize: "small" }}>
-            ぼかしと暗さを編集して背景を作成しよう。
-          </p>
+      <div style={{ paddingLeft: "4%", width: "96%", paddingTop: "2%" }}>
+        <h4>Background Creator</h4>
+        <p style={{ fontSize: "small" }}>
+          ぼかしと暗さを編集して背景を作成しよう。
+        </p>
         <div style={{ marginBottom: "10px" }}>
           <div style={{ fontWeight: "bold" }}>プレビュー(原寸)</div>
           {files ? (
             <Scrollbars
               autoHeight
-              autoHeightMin={parseInt(window.innerHeight * 0.60, 10)}
+              autoHeightMin={parseInt(window.innerHeight * 0.6, 10)}
             >
               <img
                 id="download-element"
@@ -53,7 +53,9 @@ function App() {
         </div>
         <div>
           <div>
-            <span style={{ fontWeight: "bold" , marginRight: "20px"}}>ぼかし</span>
+            <span style={{ fontWeight: "bold", marginRight: "20px" }}>
+              ぼかし
+            </span>
             <Slider
               axis="x"
               xstep={0.1}
@@ -64,7 +66,9 @@ function App() {
             />
           </div>
           <div>
-            <span style={{ fontWeight: "bold" , marginRight: "20px" }}>暗く　</span>
+            <span style={{ fontWeight: "bold", marginRight: "20px" }}>
+              暗く　
+            </span>
             <Slider
               axis="x"
               xmin={0}
@@ -73,8 +77,11 @@ function App() {
               onChange={({ x }) => setBrightVal(parseInt(x, 10))}
             />
           </div>
-          <div style={{ position: "absolute", right: '4vw', bottom: '4vh' }}>
-            <Button onClick={() => selectFiles({ accept: "image/*" })  } style={{marginRight: '20px'}}>
+          <div style={{ position: "absolute", right: "4vw", bottom: "4vh" }}>
+            <Button
+              onClick={() => selectFiles({ accept: "image/*" })}
+              style={{ marginRight: "20px" }}
+            >
               画像を選択
             </Button>
             <Button onClick={() => download()}>保存</Button>
