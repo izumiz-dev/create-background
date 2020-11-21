@@ -3,18 +3,19 @@ import { Scrollbars } from "react-custom-scrollbars";
 import Slider from "react-input-slider";
 import { useFileUpload } from "use-file-upload";
 import domtoimage from "dom-to-image";
-import { Button, Jumbotron, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [blurVal, setBlurVal] = useState(0.0);
-  const [brightVal, setBrightVal] = useState(100);
+  const [brightVal, setBrightVal] = useState(0);
   const [files, selectFiles] = useFileUpload(null);
 
   const download = () => {
     domtoimage
-      .toJpeg(document.getElementById("download-element"), { quality: 0.90 })
+      .toJpeg(document.getElementById("download-element"), { quality: 0.9 })
       .then(function(dataUrl) {
         const link = document.createElement("a");
         link.download = `${new Date().valueOf()}.jpg`;
@@ -25,41 +26,34 @@ function App() {
 
   return (
     <>
-      <Jumbotron>
-        <Container>
-          <h3>Background Creator🛠</h3>
-          <p>
-            Let's edit blur and brightness of the image to create the
-            background.
-            <br />
+      <div style={{ paddingLeft: "4%", width: "96%" ,paddingTop: '2%'}}>
+          <h4>Background Creator</h4>
+          <p style={{ fontSize: "small" }}>
             ぼかしと暗さを編集して背景を作成しよう。
           </p>
-        </Container>
-      </Jumbotron>
-      <div style={{ paddingLeft: "10%" }}>
-        <div>
-          <Button onClick={() => selectFiles({ accept: "image/*" })} style={{marginBottom: '10px'}}>
-            Upload Image
-          </Button>
-          <h4>Preview</h4>
-          <Scrollbars autoHeight>
-            {files ? (
+        <div style={{ marginBottom: "10px" }}>
+          <div style={{ fontWeight: "bold" }}>プレビュー(原寸)</div>
+          {files ? (
+            <Scrollbars
+              autoHeight
+              autoHeightMin={parseInt(window.innerHeight * 0.60, 10)}
+            >
               <img
                 id="download-element"
                 src={files?.source}
                 alt="preview"
                 style={{
-                  filter: `blur(${blurVal}px) brightness(${brightVal}%)`,
+                  filter: `blur(${blurVal}px) brightness(${100 - brightVal}%)`,
                 }}
               />
-            ) : (
-              <div>Upload image before editing.</div>
-            )}
-          </Scrollbars>
+            </Scrollbars>
+          ) : (
+            <div>右下から画像を選択してね</div>
+          )}
         </div>
         <div>
           <div>
-            <h4>Blur</h4>
+            <span style={{ fontWeight: "bold" , marginRight: "20px"}}>ぼかし</span>
             <Slider
               axis="x"
               xstep={0.1}
@@ -70,7 +64,7 @@ function App() {
             />
           </div>
           <div>
-            <h4>Brightness</h4>
+            <span style={{ fontWeight: "bold" , marginRight: "20px" }}>暗く　</span>
             <Slider
               axis="x"
               xmin={0}
@@ -79,9 +73,16 @@ function App() {
               onChange={({ x }) => setBrightVal(parseInt(x, 10))}
             />
           </div>
-          <Button onClick={() => download()} style={{marginTop: '10px'}}>Download</Button>
+          <div style={{ position: "absolute", right: '4vw', bottom: '4vh' }}>
+            <Button onClick={() => selectFiles({ accept: "image/*" })  } style={{marginRight: '20px'}}>
+              画像を選択
+            </Button>
+            <Button onClick={() => download()}>保存</Button>
+          </div>
         </div>
-        <div style={{ position: "absolute", bottom: 1 }}>© 2020 izumiz-dev</div>
+        <div style={{ position: "absolute", bottom: 0, right: 1 }}>
+          <span>© 2020 izumiz-dev</span>
+        </div>
       </div>
     </>
   );
