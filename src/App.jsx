@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import Slider from "react-input-slider";
-import { useFileUpload } from "use-file-upload";
 import domtoimage from "dom-to-image";
 import { Button } from "react-bootstrap";
 import "./App.css";
+import { DropUpload } from "./DropUpload";
+// import { Notification } from "./Notification";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+export const App = () => {
   const [blurVal, setBlurVal] = useState(0.0);
   const [brightVal, setBrightVal] = useState(0);
-  const [files, selectFiles] = useFileUpload(null);
+  const [file, setFile] = useState(null);
+  // const [showNotifi, setShowNotifi] = useState(true);
 
   const download = () => {
     domtoimage
@@ -26,21 +28,24 @@ function App() {
 
   return (
     <>
+      {/* <Notification message={"画像を選択してください"} isShow={showNotifi} /> */}
       <div style={{ paddingLeft: "4%", width: "96%", paddingTop: "2%" }}>
         <h4>Background Creator</h4>
         <p style={{ fontSize: "small" }}>
           ぼかしと暗さを編集して背景を作成しよう。
+          <br />
+          画像サイズが大きいとバグって真っ黒になることがあります。（検証中）
         </p>
         <div style={{ marginBottom: "10px" }}>
           <div style={{ fontWeight: "bold" }}>プレビュー(原寸)</div>
-          {files ? (
+          {file ? (
             <Scrollbars
               autoHeight
               autoHeightMin={parseInt(window.innerHeight * 0.6, 10)}
             >
               <img
                 id="download-element"
-                src={files?.source}
+                src={file}
                 alt="preview"
                 style={{
                   filter: `blur(${blurVal}px) brightness(${100 - brightVal}%)`,
@@ -48,7 +53,7 @@ function App() {
               />
             </Scrollbars>
           ) : (
-            <div>右下から画像を選択してね</div>
+            <DropUpload setFile={setFile} />
           )}
         </div>
         <div>
@@ -79,10 +84,10 @@ function App() {
           </div>
           <div style={{ position: "absolute", right: "4vw", bottom: "4vh" }}>
             <Button
-              onClick={() => selectFiles({ accept: "image/*" })}
               style={{ marginRight: "20px" }}
+              onClick={() => setFile(null)}
             >
-              画像を選択
+              別の画像を選択
             </Button>
             <Button onClick={() => download()}>保存</Button>
           </div>
@@ -93,6 +98,4 @@ function App() {
       </div>
     </>
   );
-}
-
-export default App;
+};
