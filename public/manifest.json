@@ -1,6 +1,7 @@
 {
   "name": "Background Creator",
   "short_name": "Background Creator",
+  "description": "ぼかし・暗さ調節をするWebアプリ",
   "lang": "ja-JP",
   "start_url": "/create-background",
   "display": "standalone",
