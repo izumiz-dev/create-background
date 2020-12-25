@@ -5,6 +5,7 @@ import domtoimage from "dom-to-image";
 import { Button } from "react-bootstrap";
 import "./App.css";
 import { DropUpload } from "./DropUpload";
+import "@pwabuilder/pwainstall";
 // import { Notification } from "./Notification";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -96,6 +97,7 @@ export const App = () => {
           <span>© 2020 izumiz-dev</span>
         </div>
       </div>
+      <pwa-install></pwa-install>
     </>
   );
 };
