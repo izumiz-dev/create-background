@@ -8,9 +8,12 @@ import { DropUpload } from "./DropUpload";
 import "@pwabuilder/pwainstall";
 // import { Notification } from "./Notification";
 
+import { auto as followSystemColorScheme } from "darkreader";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const App = () => {
+  followSystemColorScheme();
   const [blurVal, setBlurVal] = useState(0.0);
   const [brightVal, setBrightVal] = useState(0);
   const [file, setFile] = useState(null);
